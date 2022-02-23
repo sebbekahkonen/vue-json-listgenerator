@@ -1,5 +1,5 @@
 # Vue JSON list generator
-![](./src/assets/vueSchemaJSON.png)
+![](https://raw.githubusercontent.com/sebbekahkonen/vue-json-listgenerator/master/src/assets/vueSchemaJSON.png)
   
 &nbsp;
 
