@@ -16,10 +16,6 @@ import '@koumoul/vjsf/lib/deps/third-party.js';
 export default {
 	components: { VJsf },
 	props: {
-		schema: {
-			type: Object,
-			default: null
-		},
 		data: {
 			type: Object,
 			default: null
@@ -30,10 +26,22 @@ export default {
 		}
 	},
 	data: () => ({
-		model: {}
+		model: {},
+		schema: {
+			properties: {
+
+			}
+		},
+		schemaData: ''
 	}),
 	created() {
-		console.log(this.data);
+		this.schemaData = '{';
+		Object.keys(this.data).forEach(name => {
+			this.schemaData += `"${name}": { "type": "${typeof(this.data[name])}"}, `
+		});
+		this.schemaData = this.schemaData.replace(/,\s*$/, '');
+		this.schemaData += '}'
+		this.schema.properties = JSON.parse(this.schemaData);
 		this.model = this.data;
 	},
 	methods: {
